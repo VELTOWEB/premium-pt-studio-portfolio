@@ -1,0 +1,1 @@
+window.SITE_CONFIG={brand:'KINETIQ',phone:'02-6956-1188',phoneHref:'tel:02-6956-1188',kakao:'https://pf.kakao.com/',instagram:'https://instagram.com/',address:'서울 성동구 성수이로 00길 00, 3F',map:'https://map.naver.com/'};

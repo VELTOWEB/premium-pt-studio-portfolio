@@ -1,0 +1,6 @@
+
+(()=>{'use strict';
+function initBeforeAfter(){document.querySelectorAll('[data-before-after]').forEach(w=>{const range=w.querySelector('[data-before-range]'),layer=w.querySelector('[data-before-layer]'),handle=w.querySelector('[data-before-handle]');if(!range||!layer||!handle)return;const update=()=>{const v=Number(range.value);layer.style.clipPath=`inset(0 ${100-v}% 0 0)`;handle.style.left=v+'%'};range.addEventListener('input',update);update()})}
+function initReviews(){const track=document.querySelector('[data-review-track]');if(!track)return;const prev=document.querySelector('[data-slider-prev]'),next=document.querySelector('[data-slider-next]');const step=()=>Math.min(410,track.clientWidth*.82);prev&&prev.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));next&&next.addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));let down=false,x=0,left=0;track.addEventListener('pointerdown',e=>{down=true;x=e.clientX;left=track.scrollLeft;track.setPointerCapture?.(e.pointerId)});track.addEventListener('pointermove',e=>{if(down)track.scrollLeft=left-(e.clientX-x)});['pointerup','pointercancel','pointerleave'].forEach(t=>track.addEventListener(t,()=>down=false))}
+try{initBeforeAfter();initReviews()}catch(err){console.warn('Slider init:',err)}
+})();
